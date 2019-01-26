@@ -11,7 +11,7 @@ import service.MeterReadingService
 import io.circe.generic.auto._
 
 
-class MeterReadingController(meterReadingService: MeterReadingService) extends FailFastCirceSupport {
+class MeterReadingController(meterReadingService: MeterReadingService) extends JsonSupport {
   def routes: Route = pathPrefix("readings") {
     get {
       path("read" / Segment) { smartMeterId =>

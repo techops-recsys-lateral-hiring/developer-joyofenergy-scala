@@ -3,6 +3,7 @@ package controller
 import java.time.Instant
 
 import akka.http.scaladsl.model.{HttpEntity, MediaTypes, StatusCodes}
+import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import domain.{ElectricityReading, MeterReadings}
 import org.scalatest.{FlatSpec, Matchers}
@@ -54,5 +55,17 @@ class MeterReadingControllerTest extends FlatSpec with Matchers with ScalatestRo
     }
   }
 
+  "POST /readings/store" should "fail if request is malformed" in {
+    val service = new MeterReadingService(Map())
+    val controller = new MeterReadingController(service)
+
+    val jsonMeterReadings = s"""{"electricityReadings":$jsonElectricityReadings}"""
+
+    val request = Post("/readings/store", HttpEntity(MediaTypes.`application/json`, jsonMeterReadings))
+    val routeWithRejectionHandler = Route.seal(controller.routes)
+    request ~> routeWithRejectionHandler ~> check {
+      status should be (StatusCodes.BadRequest)
+    }
+  }
 
 }
