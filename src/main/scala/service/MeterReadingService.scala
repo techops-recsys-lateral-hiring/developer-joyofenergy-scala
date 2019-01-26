@@ -1,9 +1,10 @@
 package service
 
+import domain.Ids.SmartMeterId
 import domain.{ElectricityReading, MeterReadings}
 
-class MeterReadingService(private[service] var readingsByMeterId: Map[String, Seq[ElectricityReading]] = Map()) {
-  def getReadings(smartMeterId: String): Option[Seq[ElectricityReading]] = {
+class MeterReadingService(private[service] var readingsByMeterId: Map[SmartMeterId, Seq[ElectricityReading]] = Map()) {
+  def getReadings(smartMeterId: SmartMeterId): Option[Seq[ElectricityReading]] = {
     readingsByMeterId.get(smartMeterId)
   }
 

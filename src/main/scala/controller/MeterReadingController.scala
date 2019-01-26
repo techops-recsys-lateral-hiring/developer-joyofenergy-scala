@@ -5,10 +5,10 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives.{complete, get, path, _}
 import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
-import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
+import domain.Ids.SmartMeterId
 import domain.MeterReadings
-import service.MeterReadingService
 import io.circe.generic.auto._
+import service.MeterReadingService
 
 
 class MeterReadingController(meterReadingService: MeterReadingService) extends JsonSupport {
@@ -31,7 +31,7 @@ class MeterReadingController(meterReadingService: MeterReadingService) extends J
     ToResponseMarshallable(StatusCodes.OK)
   }
 
-  private def getReadings(smartMeterId: String): ToResponseMarshallable = {
+  private def getReadings(smartMeterId: SmartMeterId): ToResponseMarshallable = {
     meterReadingService.getReadings(smartMeterId) match {
       case Some(readings) => ToResponseMarshallable(readings)
       case None => ToResponseMarshallable(StatusCodes.NotFound)
