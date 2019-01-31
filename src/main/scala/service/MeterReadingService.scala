@@ -1,6 +1,6 @@
 package service
 
-import domain.Ids.SmartMeterId
+import domain.StringTypes.SmartMeterId
 import domain.{ElectricityReading, MeterReadings}
 
 class MeterReadingService(private[service] var readingsByMeterId: Map[SmartMeterId, Seq[ElectricityReading]] = Map()) {

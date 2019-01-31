@@ -1,5 +1,5 @@
 package domain
 
-import domain.Ids.SmartMeterId
+import domain.StringTypes.SmartMeterId
 
 case class MeterReadings(smartMeterId: SmartMeterId, electricityReadings: List[ElectricityReading])

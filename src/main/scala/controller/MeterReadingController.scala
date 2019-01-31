@@ -5,8 +5,8 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives.{complete, get, path, _}
 import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
-import domain.Ids.SmartMeterId
 import domain.MeterReadings
+import domain.StringTypes.SmartMeterId
 import io.circe.generic.auto._
 import service.MeterReadingService
 
