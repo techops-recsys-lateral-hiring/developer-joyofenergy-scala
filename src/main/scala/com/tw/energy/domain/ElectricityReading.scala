@@ -1,4 +1,4 @@
-package domain
+package com.tw.energy.domain
 
 import java.time.Instant
 

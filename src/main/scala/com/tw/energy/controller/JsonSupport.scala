@@ -1,4 +1,4 @@
-package controller
+package com.tw.energy.controller
 
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 

@@ -1,8 +1,8 @@
-package service
+package com.tw.energy.service
 
 
-import domain.StringTypes.{PlanName, SmartMeterId}
-import domain.{ElectricityReading, PricePlan}
+import com.tw.energy.domain.StringTypes.{PlanName, SmartMeterId}
+import com.tw.energy.domain.{ElectricityReading, PricePlan}
 
 class PricePlanService(pricePlans: Seq[PricePlan], meterReadingService: MeterReadingService) {
 

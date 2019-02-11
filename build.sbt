@@ -4,6 +4,8 @@ version := "0.1"
 
 scalaVersion := "2.12.7"
 
+mainClass in (Compile, run) := Some("com.tw.energy.WebApp")
+
 val circeVersion = "0.10.0"
 val akkaVersion = "2.5.19"
 val akkaHttpVersion = "10.1.7"

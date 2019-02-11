@@ -1,8 +1,8 @@
-package service
+package com.tw.energy.service
 
 import java.time.Instant
 
-import domain.{ElectricityReading, MeterReadings}
+import com.tw.energy.domain.{ElectricityReading, MeterReadings}
 import org.scalatest.{FlatSpec, Matchers}
 
 class MeterReadingServiceTest extends FlatSpec with Matchers {

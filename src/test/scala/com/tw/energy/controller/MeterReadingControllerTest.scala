@@ -1,16 +1,13 @@
-package controller
+package com.tw.energy.controller
 
 import java.time.Instant
 
 import akka.http.scaladsl.model.{HttpEntity, MediaTypes, StatusCodes}
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.testkit.ScalatestRouteTest
-import domain.{ElectricityReading, MeterReadings}
+import com.tw.energy.domain.ElectricityReading
+import com.tw.energy.service.MeterReadingService
 import org.scalatest.{FlatSpec, Matchers}
-import service.MeterReadingService
-import io.circe.generic.auto._
-import io.circe.syntax._
-import io.circe.parser._
 
 class MeterReadingControllerTest extends FlatSpec with Matchers with ScalatestRouteTest {
   val time = "2019-01-24T18:11:27.142Z"

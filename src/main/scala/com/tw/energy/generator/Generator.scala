@@ -1,8 +1,8 @@
-package generator
+package com.tw.energy.generator
 
 import java.time.Instant
 
-import domain.ElectricityReading
+import com.tw.energy.domain.ElectricityReading
 
 import scala.util.Random
 

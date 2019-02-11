@@ -1,14 +1,14 @@
-package controller
+package com.tw.energy.controller
 
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives.{complete, get, path, _}
 import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
-import domain.MeterReadings
-import domain.StringTypes.SmartMeterId
+import com.tw.energy.domain.MeterReadings
+import com.tw.energy.domain.StringTypes.SmartMeterId
+import com.tw.energy.service.MeterReadingService
 import io.circe.generic.auto._
-import service.MeterReadingService
 
 
 class MeterReadingController(meterReadingService: MeterReadingService) extends JsonSupport {

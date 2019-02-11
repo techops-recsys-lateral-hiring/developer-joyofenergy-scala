@@ -1,8 +1,8 @@
-package domain
+package com.tw.energy.domain
 
 import java.time.{DayOfWeek, LocalDateTime}
 
-import domain.StringTypes.{EnergySupplier, PlanName}
+import com.tw.energy.domain.StringTypes.{EnergySupplier, PlanName}
 
 case class PricePlan(planName: PlanName, energySupplier: EnergySupplier, unitRate: BigDecimal, peakTimeMultipliers: List[PeakTimeMultiplier] = List()) {
   def calculatePrice(localDateTime: LocalDateTime): BigDecimal = {

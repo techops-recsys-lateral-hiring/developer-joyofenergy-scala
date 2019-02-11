@@ -1,4 +1,4 @@
-package service
+package com.tw.energy.service
 
 import org.scalatest.{FlatSpec, Matchers}
 

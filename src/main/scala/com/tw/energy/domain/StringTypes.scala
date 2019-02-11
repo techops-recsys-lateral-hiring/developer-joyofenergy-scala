@@ -1,4 +1,4 @@
-package domain
+package com.tw.energy.domain
 
 object StringTypes {
   type SmartMeterId = String

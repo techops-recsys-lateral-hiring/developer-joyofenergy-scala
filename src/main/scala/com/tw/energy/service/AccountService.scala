@@ -1,6 +1,6 @@
-package service
+package com.tw.energy.service
 
-import domain.StringTypes.{AccountId, SmartMeterId}
+import com.tw.energy.domain.StringTypes.{AccountId, SmartMeterId}
 
 class AccountService(private val pricePlanIdByAccountId: Map[SmartMeterId, AccountId]) {
   def getPricePlanIdForSmartMeterId(smartMeterId: SmartMeterId): Option[AccountId] = {

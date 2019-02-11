@@ -1,5 +1,7 @@
-import domain.{ElectricityReading, PricePlan}
-import generator.Generator
+package com.tw.energy
+
+import com.tw.energy.domain.{ElectricityReading, PricePlan}
+import com.tw.energy.generator.Generator
 
 object Configuration {
   private val DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER = "Dr Evil's Dark Energy"

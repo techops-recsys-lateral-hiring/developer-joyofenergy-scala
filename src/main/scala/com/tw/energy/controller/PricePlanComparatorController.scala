@@ -1,14 +1,14 @@
-package controller
+package com.tw.energy.controller
 
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives.{complete, get, path, _}
 import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
-import domain.PricePlanCosts
-import domain.StringTypes.{PlanName, SmartMeterId}
+import com.tw.energy.domain.PricePlanCosts
+import com.tw.energy.domain.StringTypes.{PlanName, SmartMeterId}
+import com.tw.energy.service.{AccountService, PricePlanService}
 import io.circe.generic.auto._
-import service.{AccountService, PricePlanService}
 
 
 class PricePlanComparatorController(pricePlanService: PricePlanService, accountService: AccountService) extends JsonSupport {
