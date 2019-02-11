@@ -28,9 +28,8 @@ class PricePlanComparatorController(pricePlanService: PricePlanService, accountS
     val maybePricePlanId = accountService.getPricePlanIdForSmartMeterId(smartMeterId)
     val maybeConsumptionsForPricePlans = pricePlanService.consumptionCostByPricePlan(smartMeterId)
 
-    (maybeConsumptionsForPricePlans, maybePricePlanId) match {
-      case (Some(consumptions), Some
-        (pricePlans)) => PricePlanCosts(pricePlans, consumptions)
+    maybeConsumptionsForPricePlans match {
+      case Some(consumptions) => PricePlanCosts(maybePricePlanId, consumptions)
       case _ => StatusCodes.NotFound
     }
   }

@@ -1,3 +1,3 @@
 package domain
 
-case class PricePlanCosts(pricePlanId: String, pricePlanComparisons: Map[String, BigDecimal])
+case class PricePlanCosts(pricePlanId: Option[String], pricePlanComparisons: Map[String, BigDecimal])

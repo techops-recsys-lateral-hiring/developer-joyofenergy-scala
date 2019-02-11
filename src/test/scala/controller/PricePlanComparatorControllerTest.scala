@@ -16,9 +16,9 @@ class PricePlanComparatorControllerTest extends FlatSpec with Matchers with Scal
   val pricePlan3Id = "second-best-supplier"
   val smartMeterId = "smart-meter-id"
 
-  val pricePlan1 = PricePlan(null, pricePlan1Id, 10, null)
-  val pricePlan2 = PricePlan(null, pricePlan2Id, 1, null)
-  val pricePlan3 = PricePlan(null, pricePlan3Id, 2, null)
+  val pricePlan1 = PricePlan(pricePlan1Id, null, 10, null)
+  val pricePlan2 = PricePlan(pricePlan2Id, null, 1, null)
+  val pricePlan3 = PricePlan(pricePlan3Id, null, 2, null)
 
   trait Setup {
     val meterReadingService = new MeterReadingService()
@@ -39,7 +39,7 @@ class PricePlanComparatorControllerTest extends FlatSpec with Matchers with Scal
       pricePlan3Id -> BigDecimal("20.00"),
     )
 
-    val expected = PricePlanCosts(pricePlan1Id, expectedPricePlanCost)
+    val expected = PricePlanCosts(Some(pricePlan1Id), expectedPricePlanCost)
 
     Get(s"/price-plans/compare-all/$smartMeterId") ~> controller.routes ~> check {
       responseAs[String] should be (expected.asJson.noSpaces)

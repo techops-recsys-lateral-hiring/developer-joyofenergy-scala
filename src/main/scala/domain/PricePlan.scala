@@ -4,8 +4,8 @@ import java.time.{DayOfWeek, LocalDateTime}
 
 import domain.StringTypes.{EnergySupplier, PlanName}
 
-case class PricePlan(energySupplier: EnergySupplier, planName: PlanName, unitRate: BigDecimal, peakTimeMultipliers: List[PeakTimeMultiplier] = List()) {
-  def calculatePrice(localDateTime: LocalDateTime) = {
+case class PricePlan(planName: PlanName, energySupplier: EnergySupplier, unitRate: BigDecimal, peakTimeMultipliers: List[PeakTimeMultiplier] = List()) {
+  def calculatePrice(localDateTime: LocalDateTime): BigDecimal = {
     val multiplier: BigDecimal = peakTimeMultipliers
       .find(_.dayOfWeek == localDateTime.getDayOfWeek)
       .map(_.multiplier)
