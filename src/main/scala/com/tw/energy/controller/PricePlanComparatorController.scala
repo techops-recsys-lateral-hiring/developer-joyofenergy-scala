@@ -17,7 +17,7 @@ class PricePlanComparatorController(pricePlanService: PricePlanService, accountS
       path("compare-all" / Segment) { smartMeterId =>
         complete(calculatedCostForEachPricePlan(smartMeterId))
       } ~ path("recommend" / Segment) { smartMeterId =>
-        parameter('limit.as[Int].?) { limit =>
+        parameter(Symbol("limit").as[Int].?) { limit =>
           complete(recommendCheapestPricePlans(smartMeterId, limit))
         }
       }

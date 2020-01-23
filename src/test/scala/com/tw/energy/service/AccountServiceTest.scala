@@ -1,8 +1,9 @@
 package com.tw.energy.service
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class AccountServiceTest extends FlatSpec with Matchers {
+class AccountServiceTest extends AnyFlatSpec with Matchers {
 
   val PRICE_PLAN_ID = "price-plan-id"
   val SMART_METER_ID = "smart-meter-id"

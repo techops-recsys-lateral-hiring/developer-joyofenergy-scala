@@ -7,14 +7,15 @@ import com.tw.energy.generator.Generator
 import com.tw.energy.{JOIEnergyApplication, WebServer}
 import io.circe.generic.auto._
 import io.circe.syntax._
-import org.scalatest.{AsyncFlatSpec, BeforeAndAfterAll, Matchers}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.flatspec.AsyncFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.concurrent.Future
 import scala.util.Random
 
 class EndpointIntegrationTest extends AsyncFlatSpec with Matchers with BeforeAndAfterAll {
   private implicit val system: ActorSystem = ActorSystem()
-  private implicit val materializer: ActorMaterializer = ActorMaterializer()
   private val application = new JOIEnergyApplication
   private val port = 8000 + Random.nextInt(1000)
   private val baseUrl = s"http://localhost:$port"

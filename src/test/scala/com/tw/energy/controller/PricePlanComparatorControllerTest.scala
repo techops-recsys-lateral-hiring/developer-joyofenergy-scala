@@ -8,9 +8,10 @@ import com.tw.energy.domain.{ElectricityReading, MeterReadings, PricePlan, Price
 import com.tw.energy.service.{AccountService, MeterReadingService, PricePlanService}
 import io.circe.generic.auto._
 import io.circe.syntax._
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class PricePlanComparatorControllerTest extends FlatSpec with Matchers with ScalatestRouteTest {
+class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
   val pricePlan1Id = "test-supplier"
   val pricePlan2Id = "best-supplier"
   val pricePlan3Id = "second-best-supplier"

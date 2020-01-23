@@ -2,9 +2,10 @@ package com.tw.energy.domain
 
 import java.time.{DayOfWeek, LocalDateTime}
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class PricePlanTest extends FlatSpec with Matchers {
+class PricePlanTest extends AnyFlatSpec with Matchers {
   private val unitRate = 3
   private val planName = "plan Name"
   private val supplierName = "Supplier Name"

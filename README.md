@@ -148,8 +148,8 @@ GET
 
 ## Requirements
 
-- [Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-- [Sbt](https://www.scala-sbt.org/)
+- [Java 13](https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html)
+- [Sbt 1.3.7+](https://www.scala-sbt.org/)
 
 ## Build
 

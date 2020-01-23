@@ -3,9 +3,10 @@ package com.tw.energy.service
 import java.time.Instant
 
 import com.tw.energy.domain.{ElectricityReading, MeterReadings}
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class MeterReadingServiceTest extends FlatSpec with Matchers {
+class MeterReadingServiceTest extends AnyFlatSpec with Matchers {
   val meterId = "meterId"
   val reading = ElectricityReading(Instant.now(), 0.8)
   val readings = List(reading)
