@@ -24,5 +24,5 @@ libraryDependencies += "de.heikoseeberger" %% "akka-http-circe" % akkaHttpCirceV
 libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % Test //Test framework: http://www.scalatest.org/
 libraryDependencies += "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test //utilities to test routes: https://doc.akka.io/docs/akka-http/current/routing-dsl/testkit.html
 libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test //required by akka-http-testkit
-
+libraryDependencies += "org.typelevel"  %% "squants"  % "1.6.0"
 scalacOptions ++= Seq("-deprecation", "-feature")

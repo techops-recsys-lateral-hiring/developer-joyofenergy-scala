@@ -1,3 +1,5 @@
 package com.tw.energy.domain
 
-case class PricePlanCosts(pricePlanId: Option[String], pricePlanComparisons: Map[String, BigDecimal])
+import squants.market.Money
+
+case class PricePlanCosts(pricePlanId: Option[String], pricePlanComparisons: Map[String, Money])
