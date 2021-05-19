@@ -5,13 +5,13 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives.{complete, get, path, _}
 import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
-import com.tw.energy.domain.MeterReadings
+import com.tw.energy.domain.{MeterReadings, SquantsJsonSupport}
 import com.tw.energy.domain.StringTypes.SmartMeterId
 import com.tw.energy.service.MeterReadingService
 import io.circe.generic.auto._
 
 
-class MeterReadingController(meterReadingService: MeterReadingService) extends JsonSupport {
+class MeterReadingController(meterReadingService: MeterReadingService) extends JsonSupport with SquantsJsonSupport {
   def routes: Route = pathPrefix("readings") {
     get {
       path("read" / Segment) { smartMeterId =>
