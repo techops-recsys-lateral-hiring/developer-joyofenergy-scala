@@ -5,6 +5,7 @@ import io.circe.generic.JsonCodec
 
 import java.time.Instant
 import squants.energy.{Kilowatts, Power}
+import squants.market.Money
 
 case class ElectricityReading(time: Instant, reading: Power)
 
@@ -20,5 +21,9 @@ trait SquantsJsonSupport {
   } yield {
     Power((reading, unit)).get
   }
+
+  implicit val encodeMoney: Encoder[Money] = ???
+
+  implicit val decodeMoney: Decoder[Money] = ???
 
 }

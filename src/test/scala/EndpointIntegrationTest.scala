@@ -2,7 +2,7 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
 import akka.stream.ActorMaterializer
-import com.tw.energy.domain.MeterReadings
+import com.tw.energy.domain.{MeterReadings, SquantsJsonSupport}
 import com.tw.energy.generator.Generator
 import com.tw.energy.{JOIEnergyApplication, WebServer}
 import io.circe.generic.auto._
@@ -14,7 +14,7 @@ import org.scalatest.matchers.should.Matchers
 import scala.concurrent.Future
 import scala.util.Random
 
-class EndpointIntegrationTest extends AsyncFlatSpec with Matchers with BeforeAndAfterAll {
+class EndpointIntegrationTest extends AsyncFlatSpec with Matchers with BeforeAndAfterAll with SquantsJsonSupport {
   private implicit val system: ActorSystem = ActorSystem()
   private val application = new JOIEnergyApplication
   private val port = 8000 + Random.nextInt(1000)

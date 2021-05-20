@@ -1,14 +1,14 @@
 package com.tw.energy.service
 
 import java.time.Instant
-
 import com.tw.energy.domain.{ElectricityReading, MeterReadings}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+import squants.energy.Kilowatts
 
 class MeterReadingServiceTest extends AnyFlatSpec with Matchers {
   val meterId = "meterId"
-  val reading = ElectricityReading(Instant.now(), 0.8)
+  val reading = ElectricityReading(Instant.now(), Kilowatts(0.8))
   val readings = List(reading)
 
   "getReadings" should "get readings if Id exists" in {
@@ -34,7 +34,7 @@ class MeterReadingServiceTest extends AnyFlatSpec with Matchers {
 
   "storeReadings" should "append readings if entry already exists" in {
     val service = new MeterReadingService(Map(meterId -> List(reading)))
-    val anotherReading = ElectricityReading(Instant.now(), 0.7)
+    val anotherReading = ElectricityReading(Instant.now(), Kilowatts(0.7))
 
     service.storeReadings(MeterReadings(meterId, List(anotherReading)))
 

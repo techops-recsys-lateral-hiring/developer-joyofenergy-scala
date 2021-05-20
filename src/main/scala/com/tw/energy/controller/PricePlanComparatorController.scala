@@ -5,13 +5,13 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives.{complete, get, path, _}
 import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
-import com.tw.energy.domain.PricePlanCosts
+import com.tw.energy.domain.{PricePlanCosts, SquantsJsonSupport}
 import com.tw.energy.domain.StringTypes.{PlanName, SmartMeterId}
 import com.tw.energy.service.{AccountService, PricePlanService}
 import io.circe.generic.auto._
 
 
-class PricePlanComparatorController(pricePlanService: PricePlanService, accountService: AccountService) extends JsonSupport {
+class PricePlanComparatorController(pricePlanService: PricePlanService, accountService: AccountService) extends JsonSupport with SquantsJsonSupport {
   def routes: Route = pathPrefix("price-plans") {
     get {
       path("compare-all" / Segment) { smartMeterId =>
