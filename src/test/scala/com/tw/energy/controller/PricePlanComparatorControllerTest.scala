@@ -70,9 +70,9 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     meterReadingService.storeReadings(MeterReadings(smartMeterId, List(electricityReading, otherReading)))
 
     val limit = 2
-    val expectedPricePlanCost: List[Map[String, BigDecimal]] = List(
-      Map(pricePlan2Id -> BigDecimal("16.67")),
-      Map(pricePlan3Id -> BigDecimal("33.33"))
+    val expectedPricePlanCost: List[Map[String, Money]] = List(
+      Map(pricePlan2Id -> EUR(16.67)),
+      Map(pricePlan3Id -> EUR(33.33))
     )
 
     Get(s"/price-plans/recommend/$smartMeterId?limit=$limit") ~> controller.routes ~> check {
