@@ -54,9 +54,9 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     meterReadingService.storeReadings(MeterReadings(smartMeterId, List(electricityReading, otherReading)))
 
     val expectedPricePlanCost: List[Map[String, Money]] = List(
-      Map(pricePlan2Id -> EUR(38)),
-      Map(pricePlan3Id -> EUR(76)),
-      Map(pricePlan1Id -> EUR(380))
+      Map(pricePlan2Id -> EUR(9.5)),
+      Map(pricePlan3Id -> EUR(19)),
+      Map(pricePlan1Id -> EUR(95))
     )
 
     Get(s"/price-plans/recommend/$smartMeterId") ~> controller.routes ~> check {
@@ -71,8 +71,9 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
 
     val limit = 2
     val expectedPricePlanCost: List[Map[String, Money]] = List(
-      Map(pricePlan2Id -> EUR(16.67)),
-      Map(pricePlan3Id -> EUR(33.33))
+      Map(pricePlan2Id -> EUR(9.375)),
+      //TODO: how to properly handle trailing zeros in decoding/encoding?
+      Map(pricePlan3Id -> EUR(BigDecimal("18.750")))
     )
 
     Get(s"/price-plans/recommend/$smartMeterId?limit=$limit") ~> controller.routes ~> check {
