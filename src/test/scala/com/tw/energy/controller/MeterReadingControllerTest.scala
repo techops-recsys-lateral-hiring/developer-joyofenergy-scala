@@ -14,7 +14,7 @@ class MeterReadingControllerTest extends AnyFlatSpec with Matchers with Scalates
   val time = "2019-01-24T18:11:27.142Z"
   val reading = Kilowatts(0.6)
   val smartMeterId = "validId"
-  val jsonElectricityReadings = s"""[{"time":"$time","reading":{"reading":0.6,"unit":"kW"}}]"""
+  val jsonElectricityReadings = s"""[{"time":"$time","reading":{"amount":0.6,"unit":"kW"}}]"""
   val jsonMeterReadings = s"""{"smartMeterId":"$smartMeterId","electricityReadings":$jsonElectricityReadings}"""
 
 

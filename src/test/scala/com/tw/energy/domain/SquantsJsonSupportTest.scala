@@ -61,7 +61,7 @@ class SquantsJsonSupportTest extends AnyFreeSpec with TableDrivenPropertyChecks 
     "should decode instance of power:" - {
       val inputs =
         Table(
-          ("reading", "unit", "result"),
+          ("amount", "unit", "result"),
           (1, "W", Watts(1)),
           (-1, "W", Watts(-1)),
           (100.2, "W", Watts(100.20)),
@@ -72,9 +72,9 @@ class SquantsJsonSupportTest extends AnyFreeSpec with TableDrivenPropertyChecks 
           (1000000.243, "kW", Kilowatts(1000000.243)),
         )
 
-      forAll(inputs) { (reading: Any, unit: String, expected: Power) =>
-        s"should decode $reading $unit" in {
-          val input = s"""{ "reading": $reading, "unit": "$unit" }"""
+      forAll(inputs) { (amount: Any, unit: String, expected: Power) =>
+        s"should decode $amount $unit" in {
+          val input = s"""{ "amount": $amount, "unit": "$unit" }"""
           import org.scalatest.EitherValues._
           decode[Power](input).value shouldBe (expected)
         }
@@ -84,7 +84,7 @@ class SquantsJsonSupportTest extends AnyFreeSpec with TableDrivenPropertyChecks 
     "should encode instance of power:" - {
       val inputs =
         Table(
-          ("power", "reading", "unit"),
+          ("power", "amount", "unit"),
           (Watts(1),"1.0", "W"),
           (Watts(-1) ,"-1.0", "W"),
           (Watts(100.20) ,"100.2", "W"),
@@ -95,11 +95,11 @@ class SquantsJsonSupportTest extends AnyFreeSpec with TableDrivenPropertyChecks 
           (Kilowatts(1000000.243) ,"1000000.243", "kW"),
         )
 
-      forAll(inputs) { (power: Power, reading: String, unit: String) =>
-        s"should encode $reading $unit" in {
+      forAll(inputs) { (power: Power, amount: String, unit: String) =>
+        s"should encode $amount $unit" in {
           val expected =
             s"""{
-               |  "reading" : $reading,
+               |  "amount" : $amount,
                |  "unit" : "$unit"
                |}""".stripMargin
           power.asJson.toString should equal(expected)

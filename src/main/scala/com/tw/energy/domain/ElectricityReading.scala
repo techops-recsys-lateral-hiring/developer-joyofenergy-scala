@@ -13,14 +13,14 @@ trait SquantsJsonSupport {
   implicit val moneyContext: MoneyContext = defaultMoneyContext
 
   implicit val encodePower: Encoder[Power] = (power: Power) => Json.obj(
-    ("reading", Json.fromDouble(power.value).getOrElse(Json.Null)),
+    ("amount", Json.fromDouble(power.value).getOrElse(Json.Null)),
     ("unit", Json.fromString(power.unit.symbol))
   )
 
   implicit val decodePower: Decoder[Power] = (c: HCursor) => for {
-    reading <- c.downField("reading").as[Double]
+    amount <- c.downField("amount").as[Double]
     unit <- c.downField("unit").as[String]
-    power <- Power((reading, unit)).fold(ex => Left(DecodingFailure.fromThrowable(ex, c.history)), power => Right(power))
+    power <- Power((amount, unit)).fold(ex => Left(DecodingFailure.fromThrowable(ex, c.history)), power => Right(power))
   } yield {
     power
   }
