@@ -2,9 +2,9 @@ name := "joi-energy-scala"
 
 version := "0.1"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 
-mainClass in (Compile, run) := Some("com.tw.energy.WebApp")
+Compile / run / mainClass := Some("com.tw.energy.WebApp")
 
 val circeVersion = "0.13.0"
 val akkaVersion = "2.6.14"
@@ -25,4 +25,5 @@ libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % Test 
 libraryDependencies += "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % Test //utilities to test routes: https://doc.akka.io/docs/akka-http/current/routing-dsl/testkit.html
 libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test //required by akka-http-testkit
 libraryDependencies += "org.typelevel"  %% "squants"  % "1.6.0"
+
 scalacOptions ++= Seq("-deprecation", "-feature")
