@@ -2,6 +2,8 @@ package com.tw.energy
 
 import com.tw.energy.domain.{ElectricityReading, PricePlan}
 import com.tw.energy.generator.Generator
+import squants.energy.KilowattHours
+import squants.market.EUR
 
 object Configuration {
   private val DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER = "Dr Evil's Dark Energy"
@@ -17,9 +19,9 @@ object Configuration {
   private val ALEXS_SMART_METER_ID = "smart-meter-4"
 
   val pricePlans: List[PricePlan] = List(
-    PricePlan(MOST_EVIL_PRICE_PLAN_ID, DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER, 10, List()),
-    PricePlan(RENEWABLES_PRICE_PLAN_ID, THE_GREEN_ECO_ENERGY_SUPPLIER, 2, List()),
-    PricePlan(STANDARD_PRICE_PLAN_ID, POWER_FOR_EVERYONE_ENERGY_SUPPLIER, 1, List())
+    PricePlan(MOST_EVIL_PRICE_PLAN_ID, DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER, EUR(10)/KilowattHours(1), List()),
+    PricePlan(RENEWABLES_PRICE_PLAN_ID, THE_GREEN_ECO_ENERGY_SUPPLIER, EUR(2)/KilowattHours(1), List()),
+    PricePlan(STANDARD_PRICE_PLAN_ID, POWER_FOR_EVERYONE_ENERGY_SUPPLIER, EUR(1)/KilowattHours(1), List())
   )
 
   val smartMeterToPricePlanAccounts: Map[String, String] = Map(
