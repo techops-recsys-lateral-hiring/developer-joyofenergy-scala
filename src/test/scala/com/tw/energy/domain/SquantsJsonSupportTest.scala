@@ -6,6 +6,7 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 import squants.market.{EUR, Money}
 import io.circe.syntax._
+import squants.energy.{Kilowatts, Power, Watts}
 
 class SquantsJsonSupportTest extends AnyFreeSpec with TableDrivenPropertyChecks with Matchers with SquantsJsonSupport {
 
@@ -53,6 +54,55 @@ class SquantsJsonSupportTest extends AnyFreeSpec with TableDrivenPropertyChecks 
                |  "currency" : "$currency"
                |}""".stripMargin
           money.asJson.toString should equal(expected)
+        }
+      }
+    }
+
+    "should decode instance of power:" - {
+      val inputs =
+        Table(
+          ("reading", "unit", "result"),
+          (1, "W", Watts(1)),
+          (-1, "W", Watts(-1)),
+          (100.2, "W", Watts(100.20)),
+          (1000000.243, "W", Watts(1000000.243)),
+          (1, "kW", Kilowatts(1)),
+          (-1, "kW", Kilowatts(-1)),
+          (100.2, "kW", Kilowatts(100.20)),
+          (1000000.243, "kW", Kilowatts(1000000.243)),
+        )
+
+      forAll(inputs) { (reading: Any, unit: String, expected: Power) =>
+        s"should decode $reading $unit" in {
+          val input = s"""{ "reading": $reading, "unit": "$unit" }"""
+          import org.scalatest.EitherValues._
+          decode[Power](input).value shouldBe (expected)
+        }
+      }
+    }
+
+    "should encode instance of power:" - {
+      val inputs =
+        Table(
+          ("power", "reading", "unit"),
+          (Watts(1),"1.0", "W"),
+          (Watts(-1) ,"-1.0", "W"),
+          (Watts(100.20) ,"100.2", "W"),
+          (Watts(1000000.243) ,"1000000.243", "W"),
+          (Kilowatts(1),"1.0", "kW"),
+          (Kilowatts(-1) ,"-1.0", "kW"),
+          (Kilowatts(100.20) ,"100.2", "kW"),
+          (Kilowatts(1000000.243) ,"1000000.243", "kW"),
+        )
+
+      forAll(inputs) { (power: Power, reading: String, unit: String) =>
+        s"should encode $reading $unit" in {
+          val expected =
+            s"""{
+               |  "reading" : $reading,
+               |  "unit" : "$unit"
+               |}""".stripMargin
+          power.asJson.toString should equal(expected)
         }
       }
     }
