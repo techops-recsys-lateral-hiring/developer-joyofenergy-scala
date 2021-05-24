@@ -23,7 +23,7 @@ class PricePlanService(pricePlans: Seq[PricePlan], meterReadingService: MeterRea
     val average: Power = calculateAverageReading(readings)
     val timeElapsed: Time = calculateTimeElapsed(readings)
     val energyConsumption : Energy = average * timeElapsed
-    EUR(energyConsumption.toKilowattHours * plan.unitRate)
+    energyConsumption * plan.unitRate
   }
 
   def consumptionCostByPricePlan(smartMeterId: SmartMeterId): Option[Map[PlanName, Money]] = {

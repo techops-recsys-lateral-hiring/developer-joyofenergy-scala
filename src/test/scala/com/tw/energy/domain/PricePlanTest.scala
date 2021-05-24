@@ -1,12 +1,13 @@
 package com.tw.energy.domain
 
 import java.time.{DayOfWeek, LocalDateTime}
-
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+import squants.energy.KilowattHours
+import squants.market.EUR
 
 class PricePlanTest extends AnyFlatSpec with Matchers {
-  private val unitRate = 3
+  private val unitRate = EUR(3)/KilowattHours(1)
   private val planName = "plan Name"
   private val supplierName = "Supplier Name"
   private val tuesdayMultiplier = PeakTimeMultiplier(DayOfWeek.TUESDAY, 1.5)
@@ -18,11 +19,11 @@ class PricePlanTest extends AnyFlatSpec with Matchers {
 
 
   "calculatePrice" should "return standard rate when no peak time multiplier applies" in {
-    pricePlan.calculatePrice(monday) should be(3)
+    pricePlan.calculatePrice(monday) should be(EUR(3)/KilowattHours(1))
   }
 
   "calculatePrice" should "return modified rate when multiplier applies" in {
-    pricePlan.calculatePrice(tuesday) should be(4.5)
-    pricePlan.calculatePrice(wednesday) should be(7.5)
+    pricePlan.calculatePrice(tuesday) should be(EUR(4.5)/KilowattHours(1))
+    pricePlan.calculatePrice(wednesday) should be(EUR(7.5)/KilowattHours(1))
   }
 }
