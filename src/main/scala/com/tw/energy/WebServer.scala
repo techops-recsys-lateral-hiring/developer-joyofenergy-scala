@@ -14,7 +14,7 @@ class WebServer(val route: Route, val host: String = "localhost", val port: Int 
   implicit val executionContext: ExecutionContext = system.dispatcher
 
   def start(): RunningServer = {
-    new RunningServer(Http().bindAndHandle(route, host, port))
+    new RunningServer(Http().newServerAt(host, port).bindFlow(route))
   }
 
   class RunningServer(bindingFuture: Future[Http.ServerBinding]) {

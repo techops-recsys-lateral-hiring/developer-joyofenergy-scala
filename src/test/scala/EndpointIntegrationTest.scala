@@ -1,7 +1,6 @@
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
-import akka.stream.ActorMaterializer
 import com.tw.energy.domain.MeterReadings
 import com.tw.energy.generator.Generator
 import com.tw.energy.{JOIEnergyApplication, WebServer}
