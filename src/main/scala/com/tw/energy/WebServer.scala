@@ -10,7 +10,7 @@ import scala.io.StdIn
 object WebServer
 
 class WebServer(val route: Route, val host: String = "localhost", val port: Int = 8080) {
-  implicit val system: ActorSystem = ActorSystem("joi-energy-system")
+  implicit val system: ActorSystem = ActorSystem("joy-of-energy-system")
   implicit val executionContext: ExecutionContext = system.dispatcher
 
   def start(): RunningServer = {
