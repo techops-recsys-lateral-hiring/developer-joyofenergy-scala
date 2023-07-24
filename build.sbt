@@ -1,18 +1,14 @@
 inThisBuild(
   List(
-    name := "joi-energy-scala",
     version := "0.1",
-    scalaVersion := "2.13.10",
-    Compile / mainClass := Some("com.tw.energy.WebApp"),
-    run / mainClass := Some("com.tw.energy.WebApp"),
-  ),
+    scalaVersion := "2.13.11")
 )
 
 val circeVersion = "0.14.5"
-val akkaVersion = "2.6.20"
-val akkaHttpVersion = "10.2.10"
+val akkaVersion = "2.8.2"
+val akkaHttpVersion = "10.5.2"
 val akkaHttpCirceVersion = "1.39.2"
-val scalaTestVersion = "3.2.15"
+val scalaTestVersion = "3.2.16"
 
 libraryDependencies += "com.typesafe.akka" %% "akka-http" % akkaHttpVersion // Http Server library: https://doc.akka.io/docs/akka-http/current/server-side/index.html
 libraryDependencies += "com.typesafe.akka" %% "akka-stream" % akkaVersion // Required by akka-http
