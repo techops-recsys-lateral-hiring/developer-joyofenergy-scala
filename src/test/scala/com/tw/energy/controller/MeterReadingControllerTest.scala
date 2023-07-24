@@ -1,8 +1,8 @@
 package com.tw.energy.controller
 
-import java.time.Instant
-
-import akka.http.scaladsl.model.{HttpEntity, MediaTypes, StatusCodes}
+import akka.http.scaladsl.model.HttpEntity
+import akka.http.scaladsl.model.MediaTypes
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import com.tw.energy.domain.ElectricityReading
@@ -10,12 +10,14 @@ import com.tw.energy.service.MeterReadingService
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
+import java.time.Instant
+
 class MeterReadingControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
   val time = "2019-01-24T18:11:27.142Z"
   val reading = 0.6
   val smartMeterId = "validId"
-  val jsonElectricityReadings = s"""[{"time":"$time","reading":$reading}]"""
-  val jsonMeterReadings = s"""{"smartMeterId":"$smartMeterId","electricityReadings":$jsonElectricityReadings}"""
+  val jsonElectricityReadings: String = s"""[{"time":"$time","reading":$reading}]"""
+  val jsonMeterReadings: String = s"""{"smartMeterId":"$smartMeterId","electricityReadings":$jsonElectricityReadings}"""
 
 
 

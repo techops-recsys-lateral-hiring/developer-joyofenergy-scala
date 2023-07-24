@@ -1,6 +1,7 @@
 package com.tw.energy
 
-import com.tw.energy.domain.{ElectricityReading, PricePlan}
+import com.tw.energy.domain.ElectricityReading
+import com.tw.energy.domain.PricePlan
 import com.tw.energy.generator.Generator
 
 object Configuration {

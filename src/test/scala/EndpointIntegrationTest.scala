@@ -1,9 +1,10 @@
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
+import com.tw.energy.JOIEnergyApplication
+import com.tw.energy.WebServer
 import com.tw.energy.domain.MeterReadings
 import com.tw.energy.generator.Generator
-import com.tw.energy.{JOIEnergyApplication, WebServer}
 import io.circe.generic.auto._
 import io.circe.syntax._
 import org.scalatest.BeforeAndAfterAll

@@ -1,15 +1,16 @@
 package com.tw.energy.service
 
-import java.time.Instant
-
-import com.tw.energy.domain.{ElectricityReading, MeterReadings}
+import com.tw.energy.domain.ElectricityReading
+import com.tw.energy.domain.MeterReadings
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
+import java.time.Instant
+
 class MeterReadingServiceTest extends AnyFlatSpec with Matchers {
   val meterId = "meterId"
-  val reading = ElectricityReading(Instant.now(), 0.8)
-  val readings = List(reading)
+  val reading: ElectricityReading = ElectricityReading(Instant.now(), 0.8)
+  val readings: List[ElectricityReading] = List(reading)
 
   "getReadings" should "get readings if Id exists" in {
 
