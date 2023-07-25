@@ -12,7 +12,7 @@ import org.scalatest.matchers.should.Matchers
 
 import java.time.Instant
 
-class MeterReadingControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
+class MeterReadingControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest with JsonSupport {
   val time = "2019-01-24T18:11:27.142Z"
   val reading = 0.6
   val smartMeterId = "validId"
