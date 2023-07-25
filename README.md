@@ -76,7 +76,7 @@ POST
 }
 ```
 
-`timestamp`: Unix timestamp, e.g. `1504777098`   
+`timestamp`: Unix timestamp in seconds, e.g. `1504777098`   
 `reading`: kW reading of meter at that time, e.g. `0.0503`
 
 ### Get Stored Readings
@@ -94,7 +94,7 @@ GET
 
 ```json
 [
-    { "time": "2017-09-07T10:37:52.362Z", "reading": 1.3524882598124337 },
+    { "time": 1504777098, "reading": 1.3524882598124337 },
     ...
 ]
 ```
@@ -149,7 +149,7 @@ GET
 ## Requirements
 
 - [Java 13](https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html)
-- [Sbt 1.3.7+](https://www.scala-sbt.org/)
+- [Sbt 1.9.x](https://www.scala-sbt.org/)
 
 ## Build
 

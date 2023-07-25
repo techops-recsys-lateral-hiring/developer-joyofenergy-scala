@@ -47,7 +47,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     val expected = PricePlanCosts(Some(pricePlan1Id), expectedPricePlanCost)
 
     Get(s"/price-plans/compare-all/$smartMeterId") ~> controller.routes ~> check {
-      responseAs[String] should be (expected.toJson)
+      responseAs[String] should be (expected.toJson.compactPrint)
     }
   }
 
@@ -63,7 +63,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     )
 
     Get(s"/price-plans/recommend/$smartMeterId") ~> controller.routes ~> check {
-      responseAs[String] should be (expectedPricePlanCost.toJson)
+      responseAs[String] should be (expectedPricePlanCost.toJson.compactPrint)
     }
   }
 
@@ -79,7 +79,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     )
 
     Get(s"/price-plans/recommend/$smartMeterId?limit=$limit") ~> controller.routes ~> check {
-      responseAs[String] should be (expectedPricePlanCost.toJson)
+      responseAs[String] should be (expectedPricePlanCost.toJson.compactPrint)
     }
   }
 
@@ -96,7 +96,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     )
 
     Get(s"/price-plans/recommend/$smartMeterId?limit=$limit") ~> controller.routes ~> check {
-      responseAs[String] should be (expectedPricePlanCost.toJson)
+      responseAs[String] should be (expectedPricePlanCost.toJson.compactPrint)
     }
   }
 

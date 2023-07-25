@@ -13,16 +13,14 @@ import org.scalatest.matchers.should.Matchers
 import java.time.Instant
 
 class MeterReadingControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest with JsonSupport {
-  val time = "2019-01-24T18:11:27.142Z"
+  val time = 1548353487
   val reading = 0.6
   val smartMeterId = "validId"
-  val jsonElectricityReadings: String = s"""[{"time":"$time","reading":$reading}]"""
+  val jsonElectricityReadings: String = s"""[{"reading":$reading,"time":$time}]"""
   val jsonMeterReadings: String = s"""{"smartMeterId":"$smartMeterId","electricityReadings":$jsonElectricityReadings}"""
 
-
-
   "GET /readings/read/<meterId>" should "be answered with meterReadings for valid meterId" in {
-    val service = new MeterReadingService(Map(smartMeterId -> List(ElectricityReading(Instant.parse(time), reading))))
+    val service = new MeterReadingService(Map(smartMeterId -> List(ElectricityReading(Instant.ofEpochSecond(time), reading))))
     val controller = new MeterReadingController(service)
 
     Get("/readings/read/validId") ~> controller.routes ~> check {
