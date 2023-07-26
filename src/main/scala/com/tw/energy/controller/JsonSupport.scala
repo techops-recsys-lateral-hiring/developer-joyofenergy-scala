@@ -47,9 +47,9 @@ trait JsonSupport extends SprayJsonSupport with JavaTimeAwareJsonProtocol {
 //      )
 //    }
 //  }
-  implicit val electricityReadingFormat: RootJsonFormat[ElectricityReading] = jsonFormat2(ElectricityReading)
-  implicit val meterReadingsFormat:RootJsonFormat[MeterReadings] = jsonFormat2(MeterReadings)
-  implicit val pricePlanFormat:RootJsonFormat[PricePlan] = jsonFormat4(PricePlan)
-  implicit val peakTimeMultiplierFormat: RootJsonFormat[PeakTimeMultiplier] = jsonFormat2(PeakTimeMultiplier)
-  implicit val pricePlanCosts: RootJsonFormat[PricePlanCosts] = jsonFormat2(PricePlanCosts)
+  implicit val electricityReadingFormat: RootJsonFormat[ElectricityReading] = jsonFormat2(ElectricityReading.apply)
+  implicit val meterReadingsFormat:RootJsonFormat[MeterReadings] = jsonFormat2(MeterReadings.apply)
+  implicit val pricePlanFormat:RootJsonFormat[PricePlan] = jsonFormat4(PricePlan.apply)
+  implicit val peakTimeMultiplierFormat: RootJsonFormat[PeakTimeMultiplier] = jsonFormat2(PeakTimeMultiplier.apply)
+  implicit val pricePlanCosts: RootJsonFormat[PricePlanCosts] = jsonFormat2(PricePlanCosts.apply)
 }

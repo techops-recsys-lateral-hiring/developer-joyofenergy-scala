@@ -1,11 +1,11 @@
 package com.tw.energy.controller
 
-import akka.http.scaladsl.marshalling.ToResponseMarshallable
+import akka.http.scaladsl.marshalling.{ToEntityMarshaller, ToResponseMarshallable}
 import akka.http.scaladsl.model.*
 import akka.http.scaladsl.server.Directives.*
 import akka.http.scaladsl.server.PathMatchers.Segment
 import akka.http.scaladsl.server.Route
-import com.tw.energy.domain.PricePlanCosts
+import com.tw.energy.domain.{ElectricityReading, PricePlanCosts}
 import com.tw.energy.domain.StringTypes.{PlanName, SmartMeterId}
 import com.tw.energy.service.{AccountService, PricePlanService}
 class PricePlanComparatorController(pricePlanService: PricePlanService, accountService: AccountService) extends JsonSupport  {
@@ -32,6 +32,8 @@ class PricePlanComparatorController(pricePlanService: PricePlanService, accountS
   }
 
   private def recommendCheapestPricePlans(smartMeterId: PlanName, limit: Option[Int]): ToResponseMarshallable = {
+    implicit val jsonMarshaller: ToEntityMarshaller[Seq[Map[String, BigDecimal]]] = sprayJsonMarshaller(seqFormat[Map[String, BigDecimal]])
+
     val maybeConsumptionsForPricePlans = pricePlanService.consumptionCostByPricePlan(smartMeterId)
 
     maybeConsumptionsForPricePlans match {
