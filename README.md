@@ -94,7 +94,7 @@ GET
 
 ```json
 [
-    { "time": 1504777098, "reading": 1.3524882598124337 },
+    { "reading": 1.3524882598124337, "time": 1504777098 },
     ...
 ]
 ```
@@ -148,14 +148,11 @@ GET
 
 ## Requirements
 
-- [Java 13](https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html)
-- [Sbt 1.9.x](https://www.scala-sbt.org/)
+The project is written in Scala 3. We recommend using  [Java 17](https://adoptium.net/en-GB/) or higher.
+
+The build system is SBT - we are using the latest version, currently 1.9.3.
 
 ## Build
-
-```console
-$ sbt build
-```
 
 ## Test
 
@@ -166,5 +163,7 @@ $ sbt test
 ## Run
 
 ```console
-$ sbt run # available at localhost:8080 by default
+$ sbt run
 ```
+
+The application starts on `localhost:8080` by default.
