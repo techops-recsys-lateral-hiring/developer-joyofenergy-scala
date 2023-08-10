@@ -49,7 +49,7 @@ To trial the new JOI software 5 people from the JOI accounts team have agreed to
 ## Overview
 
 JOI Energy is a new energy company that uses data to ensure customers are 
-able to be on the best pricePlan for their energy consumption.
+able to be on the best price plan for their energy consumption.
 
 ## API
 
