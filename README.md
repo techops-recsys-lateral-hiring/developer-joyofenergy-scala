@@ -1,7 +1,7 @@
 # Welcome to PowerDale
 
-PowerDale is a small town with around 100 residents. Most houses have a smartmeter installed that can save and send information
-about how much energy a house has used.
+PowerDale is a small town with around 100 residents. Most houses have a smart meter installed that can save and send information
+about how much energy a house is using at a given point in time.
 
 There are three major providers of energy in town that charge different amounts for the power they supply.
 
@@ -12,7 +12,7 @@ There are three major providers of energy in town that charge different amounts 
 # Introducing JOI Energy
 
 JOI Energy is a new startup in the energy industry.
-Rather than selling energy they want to differentiate themselves from the market by recording their customers' energy usage from their smartmeters and
+Rather than selling energy they want to differentiate themselves from the market by recording their customers' energy usage from their smart meters and
 recommending the best suppler to meet their needs.
 
 You have been placed into their development team, whose current goal is to produce an API which their customers and smart meters will interact with.
@@ -76,8 +76,8 @@ POST
 }
 ```
 
-`timestamp`: Timedystamp in ISO Format   
-`reading`: kW reading of meter at that time, e.g. `0.0503`
+`timestamp`: Timestamp in ISO Format   
+`reading`: kW reading of meter at that time as a number, e.g. `0.0503`
 
 ### Get Stored Readings
 
@@ -151,6 +151,8 @@ GET
 The project is written in Scala 3. We recommend using  [Java 17](https://adoptium.net/en-GB/) or higher.
 
 The build system is SBT - we are using the latest version, currently 1.9.3.
+
+We use Akka HTTP in this implementation.
 
 ## Build
 
