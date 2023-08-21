@@ -70,13 +70,13 @@ POST
 {
     "smartMeterId": <smartMeterId>,
     "electricityReadings": [
-        { "time": <timestamp>, "reading": <reading> },
+        { "time": "2019-01-24T18:11:27.142Z", "reading": <reading> },
         ...
     ]
 }
 ```
 
-`timestamp`: Unix timestamp in seconds, e.g. `1504777098`   
+`timestamp`: Timedystamp in ISO Format   
 `reading`: kW reading of meter at that time, e.g. `0.0503`
 
 ### Get Stored Readings
@@ -94,8 +94,8 @@ GET
 
 ```json
 [
-    { "reading": 1.3524882598124337, "time": 1504777098 },
-    ...
+  { "time": "2017-09-07T10:37:52.362Z", "reading": 1.3524882598124337 },
+  ...
 ]
 ```
 

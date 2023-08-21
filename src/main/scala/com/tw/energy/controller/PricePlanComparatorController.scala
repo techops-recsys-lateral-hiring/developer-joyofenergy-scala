@@ -8,6 +8,8 @@ import akka.http.scaladsl.server.Route
 import com.tw.energy.domain.{ElectricityReading, PricePlanCosts}
 import com.tw.energy.domain.StringTypes.{PlanName, SmartMeterId}
 import com.tw.energy.service.{AccountService, PricePlanService}
+import io.circe.generic.auto.*
+
 class PricePlanComparatorController(pricePlanService: PricePlanService, accountService: AccountService) extends JsonSupport  {
   def routes: Route = pathPrefix("price-plans") {
     get {
@@ -32,8 +34,6 @@ class PricePlanComparatorController(pricePlanService: PricePlanService, accountS
   }
 
   private def recommendCheapestPricePlans(smartMeterId: PlanName, limit: Option[Int]): ToResponseMarshallable = {
-    implicit val jsonMarshaller: ToEntityMarshaller[Seq[Map[String, BigDecimal]]] = sprayJsonMarshaller(seqFormat[Map[String, BigDecimal]])
-
     val maybeConsumptionsForPricePlans = pricePlanService.consumptionCostByPricePlan(smartMeterId)
 
     maybeConsumptionsForPricePlans match {

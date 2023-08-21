@@ -9,13 +9,14 @@ import com.tw.energy.domain.PricePlanCosts
 import com.tw.energy.service.AccountService
 import com.tw.energy.service.MeterReadingService
 import com.tw.energy.service.PricePlanService
+import io.circe.generic.auto.*
+import io.circe.syntax.*
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import spray.json.enrichAny
 
 import java.time.Instant
 
-class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest with JsonSupport {
+class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
   val pricePlan1Id = "test-supplier"
   val pricePlan2Id = "best-supplier"
   val pricePlan3Id = "second-best-supplier"
@@ -47,7 +48,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     val expected = PricePlanCosts(Some(pricePlan1Id), expectedPricePlanCost)
 
     Get(s"/price-plans/compare-all/$smartMeterId") ~> controller.routes ~> check {
-      responseAs[String] should be (expected.toJson.compactPrint)
+      responseAs[String] should be (expected.asJson.noSpaces)
     }
   }
 
@@ -63,7 +64,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     )
 
     Get(s"/price-plans/recommend/$smartMeterId") ~> controller.routes ~> check {
-      responseAs[String] should be (expectedPricePlanCost.toJson.compactPrint)
+      responseAs[String] should be (expectedPricePlanCost.asJson.noSpaces)
     }
   }
 
@@ -79,7 +80,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     )
 
     Get(s"/price-plans/recommend/$smartMeterId?limit=$limit") ~> controller.routes ~> check {
-      responseAs[String] should be (expectedPricePlanCost.toJson.compactPrint)
+      responseAs[String] should be (expectedPricePlanCost.asJson.noSpaces)
     }
   }
 
@@ -96,7 +97,7 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
     )
 
     Get(s"/price-plans/recommend/$smartMeterId?limit=$limit") ~> controller.routes ~> check {
-      responseAs[String] should be (expectedPricePlanCost.toJson.compactPrint)
+      responseAs[String] should be (expectedPricePlanCost.asJson.noSpaces)
     }
   }
 

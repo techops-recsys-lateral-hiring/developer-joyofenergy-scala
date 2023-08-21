@@ -8,7 +8,7 @@ import akka.http.scaladsl.server.Route
 import com.tw.energy.domain.{ElectricityReading, MeterReadings}
 import com.tw.energy.domain.StringTypes.SmartMeterId
 import com.tw.energy.service.MeterReadingService
-import spray.json.RootJsonWriter
+import io.circe.generic.auto.*
 
 class MeterReadingController(meterReadingService: MeterReadingService) extends JsonSupport {
   def routes: Route = pathPrefix("readings") {
@@ -31,7 +31,6 @@ class MeterReadingController(meterReadingService: MeterReadingService) extends J
   }
 
   private def getReadings(smartMeterId: SmartMeterId): ToResponseMarshallable = {
-    implicit val jsonMarshaller: ToEntityMarshaller[Seq[ElectricityReading]] = sprayJsonMarshaller(immSeqFormat)
     meterReadingService.getReadings(smartMeterId) match {
       case Some(readings) => ToResponseMarshallable(readings)
       case None => ToResponseMarshallable(StatusCodes.NotFound)

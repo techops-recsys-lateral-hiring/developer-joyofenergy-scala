@@ -6,10 +6,11 @@ import com.tw.energy.WebServer
 import com.tw.energy.controller.JsonSupport
 import com.tw.energy.domain.MeterReadings
 import com.tw.energy.generator.Generator
+import io.circe.generic.auto.*
+import io.circe.syntax.*
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.flatspec.AsyncFlatSpec
 import org.scalatest.matchers.should.Matchers
-import spray.json.enrichAny
 
 import scala.concurrent.Future
 import scala.util.Random
@@ -71,7 +72,7 @@ class EndpointIntegrationTest extends AsyncFlatSpec with Matchers with BeforeAnd
   }
 
   private def jsonEntity(readings: MeterReadings) = {
-    HttpEntity(MediaTypes.`application/json`, readings.toJson.compactPrint)
+    HttpEntity(MediaTypes.`application/json`, readings.asJson.noSpaces)
   }
 
   private def populateMeterReadingsForMeter(smartMeterId: String): Future[HttpResponse] = {
