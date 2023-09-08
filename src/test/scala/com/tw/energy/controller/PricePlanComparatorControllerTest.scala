@@ -1,15 +1,20 @@
 package com.tw.energy.controller
 
-import java.time.Instant
-
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.testkit.ScalatestRouteTest
-import com.tw.energy.domain.{ElectricityReading, MeterReadings, PricePlan, PricePlanCosts}
-import com.tw.energy.service.{AccountService, MeterReadingService, PricePlanService}
-import io.circe.generic.auto._
-import io.circe.syntax._
+import com.tw.energy.domain.ElectricityReading
+import com.tw.energy.domain.MeterReadings
+import com.tw.energy.domain.PricePlan
+import com.tw.energy.domain.PricePlanCosts
+import com.tw.energy.service.AccountService
+import com.tw.energy.service.MeterReadingService
+import com.tw.energy.service.PricePlanService
+import io.circe.generic.auto.*
+import io.circe.syntax.*
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+
+import java.time.Instant
 
 class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
   val pricePlan1Id = "test-supplier"
@@ -17,9 +22,9 @@ class PricePlanComparatorControllerTest extends AnyFlatSpec with Matchers with S
   val pricePlan3Id = "second-best-supplier"
   val smartMeterId = "smart-meter-id"
 
-  val pricePlan1 = PricePlan(pricePlan1Id, null, 10, null)
-  val pricePlan2 = PricePlan(pricePlan2Id, null, 1, null)
-  val pricePlan3 = PricePlan(pricePlan3Id, null, 2, null)
+  val pricePlan1: PricePlan = PricePlan(pricePlan1Id, null, 10, null)
+  val pricePlan2: PricePlan = PricePlan(pricePlan2Id, null, 1, null)
+  val pricePlan3: PricePlan = PricePlan(pricePlan3Id, null, 2, null)
 
   trait Setup {
     val meterReadingService = new MeterReadingService()

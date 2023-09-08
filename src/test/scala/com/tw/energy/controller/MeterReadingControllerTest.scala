@@ -1,14 +1,18 @@
 package com.tw.energy.controller
 
-import java.time.Instant
-
-import akka.http.scaladsl.model.{HttpEntity, MediaTypes, StatusCodes}
+import akka.http.scaladsl.model.HttpEntity
+import akka.http.scaladsl.model.MediaTypes
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import com.tw.energy.domain.ElectricityReading
 import com.tw.energy.service.MeterReadingService
+import io.circe.generic.auto.*
+import io.circe.syntax.*
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+
+import java.time.Instant
 
 class MeterReadingControllerTest extends AnyFlatSpec with Matchers with ScalatestRouteTest {
   val time = "2019-01-24T18:11:27.142Z"
@@ -16,8 +20,6 @@ class MeterReadingControllerTest extends AnyFlatSpec with Matchers with Scalates
   val smartMeterId = "validId"
   val jsonElectricityReadings = s"""[{"time":"$time","reading":$reading}]"""
   val jsonMeterReadings = s"""{"smartMeterId":"$smartMeterId","electricityReadings":$jsonElectricityReadings}"""
-
-
 
   "GET /readings/read/<meterId>" should "be answered with meterReadings for valid meterId" in {
     val service = new MeterReadingService(Map(smartMeterId -> List(ElectricityReading(Instant.parse(time), reading))))

@@ -1,7 +1,7 @@
 # Welcome to PowerDale
 
-PowerDale is a small town with around 100 residents. Most houses have a smartmeter installed that can save and send information
-about how much energy a house has used.
+PowerDale is a small town with around 100 residents. Most houses have a smart meter installed that can save and send information
+about how much energy a house is using at a given point in time.
 
 There are three major providers of energy in town that charge different amounts for the power they supply.
 
@@ -12,7 +12,7 @@ There are three major providers of energy in town that charge different amounts 
 # Introducing JOI Energy
 
 JOI Energy is a new startup in the energy industry.
-Rather than selling energy they want to differentiate themselves from the market by recording their customers' energy usage from their smartmeters and
+Rather than selling energy they want to differentiate themselves from the market by recording their customers' energy usage from their smart meters and
 recommending the best suppler to meet their needs.
 
 You have been placed into their development team, whose current goal is to produce an API which their customers and smart meters will interact with.
@@ -49,7 +49,7 @@ To trial the new JOI software 5 people from the JOI accounts team have agreed to
 ## Overview
 
 JOI Energy is a new energy company that uses data to ensure customers are 
-able to be on the best pricePlan for their energy consumption.
+able to be on the best price plan for their energy consumption.
 
 ## API
 
@@ -70,14 +70,14 @@ POST
 {
     "smartMeterId": <smartMeterId>,
     "electricityReadings": [
-        { "time": <timestamp>, "reading": <reading> },
+        { "time": "2019-01-24T18:11:27.142Z", "reading": <reading> },
         ...
     ]
 }
 ```
 
-`timestamp`: Unix timestamp, e.g. `1504777098`   
-`reading`: kW reading of meter at that time, e.g. `0.0503`
+`timestamp`: Timestamp in ISO Format   
+`reading`: kW reading of meter at that time as a number, e.g. `0.0503`
 
 ### Get Stored Readings
 
@@ -94,8 +94,8 @@ GET
 
 ```json
 [
-    { "time": "2017-09-07T10:37:52.362Z", "reading": 1.3524882598124337 },
-    ...
+  { "time": "2017-09-07T10:37:52.362Z", "reading": 1.3524882598124337 },
+  ...
 ]
 ```
 
@@ -148,14 +148,13 @@ GET
 
 ## Requirements
 
-- [Java 13](https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html)
-- [Sbt 1.3.7+](https://www.scala-sbt.org/)
+The project is written in Scala 3. We recommend using  [Java 17](https://adoptium.net/en-GB/) or higher.
+
+The build system is SBT - we are using the latest version, currently 1.9.3.
+
+We use Akka HTTP in this implementation.
 
 ## Build
-
-```console
-$ sbt build
-```
 
 ## Test
 
@@ -166,5 +165,7 @@ $ sbt test
 ## Run
 
 ```console
-$ sbt run # available at localhost:8080 by default
+$ sbt run
 ```
+
+The application starts on `localhost:8080` by default.

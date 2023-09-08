@@ -2,8 +2,11 @@ package com.tw.energy
 
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import com.tw.energy.controller.{MeterReadingController, PricePlanComparatorController}
-import com.tw.energy.service.{AccountService, MeterReadingService, PricePlanService}
+import com.tw.energy.controller.MeterReadingController
+import com.tw.energy.controller.PricePlanComparatorController
+import com.tw.energy.service.AccountService
+import com.tw.energy.service.MeterReadingService
+import com.tw.energy.service.PricePlanService
 
 
 class JOIEnergyApplication {
